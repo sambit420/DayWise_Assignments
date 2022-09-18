@@ -1,0 +1,140 @@
+Linux First 
+--------------------------------------------------------------------------------------------
+1. $ ls -l /etc/passwd
+
+   $ cat /etc/passwd 
+
+2. $ cat /etc/passwd | awk -F: '{print $1}'
+
+3. for getting userid greater than 1000:
+    
+   #!/bi/bash -x
+   
+   for userid in `awk -F: '{print $3}' /etc/passwd`
+   do
+   if  (("$userid" >= 1000));
+   then echo "Valid User" :`cat /etc/passwd | grep $userid | awk -F: '{print $1 " " $3}'`
+   fi
+   done
+
+
+4. #!/bi/bash -x
+   
+   for userid in `awk -F: '{print $3}' /etc/passwd`
+   do
+   if  (("$userid" >= 1000));
+   then echo "Valid User" :`cat /etc/passwd | grep $userid | awk -F: '{print $1 " " $3}'`
+   fi
+   done | awk '{print $4}'
+
+5. #!/bi/bash -x
+   
+   for userid in `awk -F: '{print $3}' /etc/passwd`
+   do
+   if  (("$userid" >= 1000));
+   then echo "Valid User" :`cat /etc/passwd | grep $userid | awk -F: '{print $6}'`
+   fi
+   done 
+6. chown $Valid User filename
+
+
+Linux 2nd
+--------------------------------------------------------------------------------------------
+
+1.touch abc.txt def.txt ghi.txt jkl.txt
+
+2.ls 
+
+3.nano forloop.sh
+
+4.#!/bi/bash -x
+ for file in *.txt
+ do
+ folderName=ècho $file | awk -F. '{print $1}'`;
+ echo $file;
+ echo $folderName;
+ printf "\n";
+ if [ -d $folderName ]
+   then  
+         rm -r $folderName;
+ fi
+ mkdir $folderName;
+ mv $file $folderName/$file;
+ done
+
+5. ./forloop.sh
+
+
+Linux 3rd
+---------------------------------------------------------------------------------------------
+1. touch abc.log.1 def.log.1 ghi.log.1 jkl.log.1 mno.log.1
+   for file in *.log.1
+ do
+ fileName=ècho $file | awk -F. '{print $1}'`;
+ echo $fileName;
+ date '+%d-%m-%Y';
+ newFile=$fileName-`date '+%d-%m-%Y'`;
+echo $newFile;
+ printf "\n";
+ if [ -s $newFile ]
+   then  
+         rm -r $newFile;
+ fi
+ cp $file $newFile.log;
+ done
+
+
+
+Linux 4th
+----------------------------------------------------------------------------------------------
+1.find /var/log -mtime -7 -ls
+for file find /var/log -mtime -7 -ls
+ do
+ fileName=ècho $file`;
+ echo $fileName;
+ mv $file ~/backup;
+ done
+
+Linux 5th
+-------------------------------------------------------------------------------
+
+1.cat /var/log/httpd/access.log
+
+2.cat /var/log/httpd/access.log | awk -F/ '{print NR "/" $8}'
+
+3.cat /var/log/httpd/access.log | uniq | sort | awk -F/ '{print NR "/" $8}'
+
+Linux 6th
+---------------------------------------------------------------------------------
+
+
+
+Linux 10th
+-----------------------------------------------------------------
+1.dldir="$HOME/linux/5.x"
+_out="/tmp/out.$$"
+do
+if [ -d "$dldir"]
+then 
+     mkdir $dldir;
+else
+     echo "folder already exist";
+fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
